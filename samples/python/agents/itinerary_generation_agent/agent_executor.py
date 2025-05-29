@@ -5,8 +5,6 @@ from typing import Any
 from a2a.server.agent_execution import AgentExecutor, RequestContext
 from a2a.server.events import Event, EventQueue
 from a2a.types import (
-    FilePart,
-    FileWithBytes,
     InvalidParamsError,
     Part,
     Task,
@@ -51,7 +49,12 @@ class ItineraryGenerationAgentExecutor(AgentExecutor):
             completed_task(
                 task_id=context.task_id,
                 context_id=context.context_id,
-                artifacts=[],
+                artifacts=[
+                    new_artifact(
+                        parts=[Part(root=TextPart(text=str(result.raw)))],
+                        name='itinerary',
+                    ),
+                ],
                 history=[context.message],
             )
         )
