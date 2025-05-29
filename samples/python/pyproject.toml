@@ -24,6 +24,7 @@ packages = ["common", "hosts"]
 members = [
     "agents/flight_search_agent",
     "agents/hotel_search_agent",
+    "agents/itinerary_generation_agent",
 ]
 
 [build-system]

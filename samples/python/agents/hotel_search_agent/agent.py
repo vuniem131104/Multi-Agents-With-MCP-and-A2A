@@ -5,7 +5,7 @@ import httpx
 
 from langchain_core.messages import AIMessage, ToolMessage
 from langchain_core.tools import tool
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_groq import ChatGroq
 from pydantic import BaseModel
 
 from langgraph.checkpoint.memory import MemorySaver
@@ -106,7 +106,7 @@ class HotelSearchAgent:
     )
 
     def __init__(self):
-        self.model = ChatGoogleGenerativeAI(model='gemini-2.0-flash')
+        self.model = ChatGroq(model='meta-llama/llama-4-scout-17b-16e-instruct')
         self.tools = [search_hotels]
 
         self.graph = create_react_agent(
