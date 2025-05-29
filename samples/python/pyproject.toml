@@ -23,6 +23,7 @@ packages = ["common", "hosts"]
 [tool.uv.workspace]
 members = [
     "agents/flight_search_agent",
+    "agents/hotel_search_agent",
 ]
 
 [build-system]

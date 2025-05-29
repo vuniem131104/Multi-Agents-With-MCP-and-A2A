@@ -5,9 +5,9 @@ description = "Sample LangGraph currency agent with A2A Protocol"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "a2a-samples",
     "click>=8.1.8",
     "httpx>=0.28.1",
+    "langchain-core>=0.3.62",
     "langchain-google-genai>=2.0.10",
     "langgraph>=0.3.18",
     "pydantic>=2.10.6",

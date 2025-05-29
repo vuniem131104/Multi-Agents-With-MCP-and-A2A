@@ -12,9 +12,8 @@ from a2a.types import (
     AgentCard,
     AgentSkill,
 )
-from agent import CurrencyAgent
-from agent_executor import CurrencyAgentExecutor
-from agents.langgraph.agent import CurrencyAgent
+from agent import HotelSearchAgent
+from agent_executor import HotelSearchAgentExecutor
 from dotenv import load_dotenv
 
 
@@ -34,7 +33,7 @@ class MissingAPIKeyError(Exception):
 @click.option('--host', 'host', default='localhost')
 @click.option('--port', 'port', default=10000)
 def main(host, port):
-    """Starts the Currency Agent server."""
+    """Starts the Hotel Search Agent server."""
     try:
         if not os.getenv('GOOGLE_API_KEY'):
             raise MissingAPIKeyError(
@@ -43,26 +42,26 @@ def main(host, port):
 
         capabilities = AgentCapabilities(streaming=True, pushNotifications=True)
         skill = AgentSkill(
-            id='convert_currency',
-            name='Currency Exchange Rates Tool',
-            description='Helps with exchange values between various currencies',
-            tags=['currency conversion', 'currency exchange'],
-            examples=['What is exchange rate between USD and GBP?'],
+            id='search_hotels',
+            name='Hotel Search Tool',
+            description='Helps with finding hotels based on user queries',
+            tags=['hotel search', 'accommodation'],
+            examples=['Find me a hotel in New York', 'Show me hotels in Paris'],
         )
         agent_card = AgentCard(
-            name='Currency Agent',
-            description='Helps with exchange rates for currencies',
+            name='Hotel Search Agent',
+            description='Helps with finding hotels and accommodations',
             url=f'http://{host}:{port}/',
             version='1.0.0',
-            defaultInputModes=CurrencyAgent.SUPPORTED_CONTENT_TYPES,
-            defaultOutputModes=CurrencyAgent.SUPPORTED_CONTENT_TYPES,
+            defaultInputModes=HotelSearchAgent.SUPPORTED_CONTENT_TYPES,
+            defaultOutputModes=HotelSearchAgent.SUPPORTED_CONTENT_TYPES,
             capabilities=capabilities,
             skills=[skill],
         )
 
         httpx_client = httpx.AsyncClient()
         request_handler = DefaultRequestHandler(
-            agent_executor=CurrencyAgentExecutor(),
+            agent_executor=HotelSearchAgentExecutor(),
             task_store=InMemoryTaskStore(),
             push_notifier=InMemoryPushNotifier(httpx_client),
         )

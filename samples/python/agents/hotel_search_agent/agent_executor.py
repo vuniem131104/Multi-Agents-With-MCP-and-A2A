@@ -17,18 +17,18 @@ from a2a.utils import (
     new_task,
 )
 from a2a.utils.errors import ServerError
-from agent import CurrencyAgent
+from agent import HotelSearchAgent
 
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-class CurrencyAgentExecutor(AgentExecutor):
-    """Currency Conversion AgentExecutor Example."""
+class HotelSearchAgentExecutor(AgentExecutor):
+    """Hotel Search AgentExecutor Example."""
 
     def __init__(self):
-        self.agent = CurrencyAgent()
+        self.agent = HotelSearchAgent()
 
     async def execute(
         self,
