@@ -6,9 +6,8 @@ A comprehensive travel planning system that combines **A2A (Agent-to-Agent)** co
 
 ## 🎥 Demo Video
 
-> **Note**: Add your demo video here when available
-> 
-> [![Demo Video](https://img.shields.io/badge/Demo-Video-red?style=for-the-badge&logo=youtube)](YOUR_VIDEO_URL_HERE)
+https://github.com/user-attachments/assets/d2d0b306-f414-4190-9044-b0609ab95c96
+
 
 ## 🌟 Features
 
