@@ -25,24 +25,6 @@ load_dotenv()
 
 logger = logging.getLogger(__name__)
 
-
-class Imagedata(BaseModel):
-    """Represents image data.
-
-    Attributes:
-      id: Unique identifier for the image.
-      name: Name of the image.
-      mime_type: MIME type of the image.
-      bytes: Base64 encoded image data.
-      error: Error message if there was an issue with the image.
-    """
-
-    id: str | None = None
-    name: str | None = None
-    mime_type: str | None = None
-    bytes: str | None = None
-    error: str | None = None
-
 class ItineraryGenerationAgent:
     """Agent that generates itineraries based on user prompts."""
 
@@ -83,7 +65,7 @@ class ItineraryGenerationAgent:
             "suggestions, and practical tips. Ensure the itinerary is realistic, well-paced, "
             "and includes both popular attractions and local experiences."
             ),
-            expected_output='The itinerary details in markdown format.',
+            expected_output='The itinerary details.',
             agent=self.itinerary_creator_agent,
         )
 
@@ -104,18 +86,3 @@ class ItineraryGenerationAgent:
         print(f'Inputs {inputs}')
         response = self.itinerary_crew.kickoff(inputs)
         return response
-
-    async def stream(self, query: str) -> AsyncIterable[dict[str, Any]]:
-        """Streaming is not supported by CrewAI."""
-        raise NotImplementedError('Streaming is not supported by CrewAI.')
-
-    # def get_image_data(self, session_id: str, image_key: str) -> Imagedata:
-    #     """Return Imagedata given a key. This is a helper method from the agent."""
-    #     cache = InMemoryCache()
-    #     session_data = cache.get(session_id)
-    #     try:
-    #         cache.get(session_id)
-    #         return session_data[image_key]
-    #     except KeyError:
-    #         logger.error('Error generating image')
-    #         return Imagedata(error='Error generating image, please try again.')

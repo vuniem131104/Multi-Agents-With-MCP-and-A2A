@@ -17,7 +17,6 @@ from a2a.utils import (
 )
 from a2a.utils.errors import ServerError
 from agent import ItineraryGenerationAgent
-from typing_extensions import override
 
 
 class ItineraryGenerationAgentExecutor(AgentExecutor):

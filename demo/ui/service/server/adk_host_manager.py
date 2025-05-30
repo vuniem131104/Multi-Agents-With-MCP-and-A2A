@@ -572,7 +572,6 @@ class ADKHostManager(ApplicationManager):
         parts = []
         try:
             for p in part.function_response.response['result']:
-                print(type(p))
                 if isinstance(p, str):
                     parts.append(Part(root=TextPart(text=p)))
                 elif isinstance(p, dict):
