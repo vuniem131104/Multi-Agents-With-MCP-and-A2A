@@ -51,7 +51,7 @@ def main(host, port):
             name='Itinerary Generator',
             description='Helps users create detailed travel itineraries based on their preferences and requirements.',
             tags=['generate itinerary', 'edit itinerary'],
-            examples=['Create a 5-day itinerary for a trip to Paris'],
+            examples=['Create a 5-day itinerary for a trip to London'],
         )
 
         agent_card = AgentCard(
