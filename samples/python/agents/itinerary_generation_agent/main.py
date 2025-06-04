@@ -51,12 +51,12 @@ def main(host, port):
             name='Itinerary Generator',
             description='Helps users create detailed travel itineraries based on their preferences and requirements.',
             tags=['generate itinerary', 'edit itinerary'],
-            examples=['Create a 1-week itinerary for a trip to Hanoi, Vietnam.',],
+            examples=['Create a 2-week itinerary for a journey to Hanoi, Vietnam.',],
         )
 
         agent_card = AgentCard(
             name='Itinerary Generator Agent',
-            description='This agent assists users in generating and editing travel itineraries based on their preferences.',
+            description='This agent will assist users in generating and editing travel itineraries based on their preferences.',
             url=f'http://{host}:{port}/',
             version='1.0.0',
             defaultInputModes=ItineraryGenerationAgent.SUPPORTED_CONTENT_TYPES,
