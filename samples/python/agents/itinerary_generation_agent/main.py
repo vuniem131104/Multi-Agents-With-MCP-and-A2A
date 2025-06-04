@@ -8,6 +8,7 @@ import logging
 import os
 
 import click
+import uvicorn
 
 from a2a.server.apps import A2AStarletteApplication
 from a2a.server.request_handlers import DefaultRequestHandler
@@ -73,7 +74,6 @@ def main(host, port):
         server = A2AStarletteApplication(
             agent_card=agent_card, http_handler=request_handler
         )
-        import uvicorn
 
         uvicorn.run(server.build(), host=host, port=port)
 
@@ -81,7 +81,7 @@ def main(host, port):
         logger.error(f'Error: {e}')
         exit(1)
     except Exception as e:
-        logger.error(f'An error occurred during server startup: {e}')
+        logger.error(f'An error occurred: {e}')
         exit(1)
 
 
