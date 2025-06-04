@@ -56,7 +56,7 @@ def main(host, port):
 
         agent_card = AgentCard(
             name='Itinerary Generator Agent',
-            description='This agent will assist users in generating and editing travel itineraries based on their preferences.',
+            description='This agent assists users in generating itineraries based on their preferences.',
             url=f'http://{host}:{port}/',
             version='1.0.0',
             defaultInputModes=ItineraryGenerationAgent.SUPPORTED_CONTENT_TYPES,
